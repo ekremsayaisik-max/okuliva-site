@@ -1,21 +1,32 @@
 <!doctype html>
-<html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Okuliva Kurulum</title><meta name="description" content="Okuliva okul kurulum ekranı: kurum bilgileri, eğitim yılı, sınıflar, kullanıcılar ve başlangıç ayarları.">
-<link rel="icon" href="../assets/logo.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css"></head>
-<body><header class="site-header"><div class="wrap nav-wrap"><a class="brand" href="../"><img src="../assets/logo.svg" class="brand-logo" alt="Okuliva"><span>Okuliva</span></a><nav class="navlinks"><a href="../">Ana sayfa</a><a href="../okul-idare-masasi/">Okul İdare Masası</a><a href="../destek/" class="nav-cta">Destek</a></nav></div></header>
-<main><section class="page-hero"><div class="wrap"><span class="section-kicker">KURULUM</span><h1>Okuliva’yı okulunuza adım adım hazırlayın.</h1><p>Kurulum akışı, gerekli başlangıç bilgilerini sırayla toplar ve okulunuzu kullanıma hazır hale getirir.</p></div></section>
-<section class="section white"><div class="wrap">
-<div class="quick-grid">
-<div><span>01</span><b>Okul bilgileri</b><small>Okul adı ve temel kurum bilgileri.</small></div>
-<div><span>02</span><b>Eğitim yılı</b><small>Aktif eğitim-öğretim dönemini seçin.</small></div>
-<div><span>03</span><b>Sınıflar</b><small>Sınıf ve şube yapısını oluşturun.</small></div>
-</div>
-<div class="quick-grid" style="margin-top:14px">
-<div><span>04</span><b>Kullanıcılar</b><small>İdareci ve öğretmen erişimlerini tanımlayın.</small></div>
-<div><span>05</span><b>Ders yapısı</b><small>Ders ve sınıf ilişkilerini kontrol edin.</small></div>
-<div><span>06</span><b>Son kontrol</b><small>Eksikleri tamamlayıp kurulumu bitirin.</small></div>
-</div>
-<div class="notice" style="margin-top:30px">Kurulum tamamlandığında okulunuz Okul İdare Masası üzerinden yönetilmeye hazır hale gelir.</div>
-<div class="actions"><a class="btn primary" href="../okul-idare-masasi/">Okul İdare Masasına Git →</a><a class="btn ghost" href="../destek/">Kurulum desteği</a></div>
-</div></section></main>
-<footer class="site-footer"><div class="wrap footer-bottom"><span>© 2026 Okuliva • Işık Labs</span><a href="../okul-idare-masasi/">Okul İdare Masası →</a></div></footer><script src="../script.js"></script></body></html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Kurulum Girişi | Okuliva</title>
+  <meta name="description" content="Okuliva okul kurulumu için yetkili giriş ekranı.">
+  <link rel="icon" href="../assets/logo.svg" type="image/svg+xml"><link rel="stylesheet" href="../styles.css">
+</head>
+<body class="auth-page">
+<header class="site-header"><div class="wrap nav-wrap"><a class="brand" href="../"><img src="../assets/logo.svg" class="brand-logo" alt="Okuliva"><span>Okuliva</span></a><nav class="navlinks"><a href="../okul-idare-masasi/">Okul İdare Masası</a><a href="../destek/" class="nav-cta">Destek</a></nav></div></header>
+<main class="auth-main">
+  <div class="auth-shell">
+    <div class="auth-intro">
+      <span class="section-kicker">OKUL KURULUMU</span>
+      <h1>Okuliva kurulumuna giriş yapın.</h1>
+      <p>Okul profili, eğitim yılı, sınıflar, kullanıcılar ve başlangıç ayarlarını yapılandırmak için kurulum hesabınızla giriş yapın.</p>
+      <ul class="auth-points"><li>Adım adım okul kurulumu</li><li>Kullanıcı adı ve şifre ile erişim</li><li>Kurulum tamamlanınca İdare Masasına geçiş</li></ul>
+    </div>
+    <section class="login-card auth-card" aria-labelledby="setup-title">
+      <div class="login-brand"><div class="login-icon setup-icon">K</div><div><span class="mini-label">KURULUM ERİŞİMİ</span><h2 id="setup-title">Kuruluma Giriş</h2></div></div>
+      <form class="login-form" data-login-form data-area="setup" novalidate>
+        <label>Kullanıcı adı<input name="username" type="text" autocomplete="username" required placeholder="Kurulum kullanıcı adı"></label>
+        <label>Şifre<span class="password-field"><input name="password" type="password" autocomplete="current-password" required placeholder="Şifreniz"><button class="password-toggle" type="button" data-password-toggle>Göster</button></span></label>
+        <button class="btn primary login-submit" type="submit">Kuruluma Giriş <span>→</span></button>
+        <p class="form-status" data-form-status aria-live="polite"></p>
+      </form>
+      <a class="support-link" href="../destek/">Kurulum hesabınızla ilgili yardım alın</a>
+    </section>
+  </div>
+</main>
+<footer class="site-footer"><div class="wrap footer-bottom"><span>© 2026 Okuliva • Işık Labs</span><a href="../okul-idare-masasi/">Okul İdaresi girişi →</a></div></footer>
+<script src="../script.js"></script></body></html>
