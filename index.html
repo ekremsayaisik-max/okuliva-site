@@ -46,16 +46,29 @@
       </div>
     </div>
 
-    <div class="hero-visual reveal delay-1" aria-hidden="true">
-      <div class="phone">
-        <div class="phone-status"><span>Okuliva</span><span>İdare</span></div>
-        <div class="appbar"><div class="appmark">O</div><div><b>Okul İdare Masası</b><small>Okul yönetim paneli</small></div><div class="avatar">İ</div></div>
-        <div class="app-card focus"><span class="mini-label">KURULUM DURUMU</span><strong>Okul profili hazır</strong><small>4 / 5 adım tamamlandı</small><div class="mini-actions"><span>Sınıflar</span><span>Öğretmenler</span></div></div>
-        <div class="app-grid"><div class="app-card"><span class="mini-icon">▦</span><b>Sınıflar</b><small>12 sınıf</small></div><div class="app-card"><span class="mini-icon">✓</span><b>Yetkiler</b><small>Güncel</small></div></div>
-        <div class="app-card"><div class="card-head"><b>Kurulum kontrolü</b><small>Bugün</small></div><div class="feed-line"><i></i><span><b>Okul bilgileri</b><small>Tamamlandı</small></span></div><div class="feed-line"><i></i><span><b>Ders programı</b><small>Kontrol bekliyor</small></span></div></div>
-      </div>
-      <div class="float-badge badge-a"><b>✓</b><span>Kurulum adım adım</span></div>
-      <div class="float-badge badge-b"><b>↗</b><span>Merkezi yönetim</span></div>
+    <div class="hero-visual reveal delay-1">
+      <section class="login-card" aria-labelledby="admin-login-title">
+        <div class="login-brand">
+          <div class="login-icon">İ</div>
+          <div><span class="mini-label">YETKİLİ ERİŞİM</span><h2 id="admin-login-title">Okul İdaresi Girişi</h2></div>
+        </div>
+        <p class="login-copy">Okul İdare Masasına erişmek için size tanımlanan kullanıcı adı ve şifreyle giriş yapın.</p>
+        <form class="login-form" data-login-form data-area="admin" novalidate>
+          <label>Kullanıcı adı
+            <input name="username" type="text" autocomplete="username" required placeholder="Kullanıcı adınız">
+          </label>
+          <label>Şifre
+            <span class="password-field">
+              <input name="password" type="password" autocomplete="current-password" required placeholder="Şifreniz">
+              <button class="password-toggle" type="button" aria-label="Şifreyi göster" data-password-toggle>Göster</button>
+            </span>
+          </label>
+          <button class="btn primary login-submit" type="submit">Okul İdare Masasına Giriş <span>→</span></button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+        </form>
+        <div class="login-divider"><span>veya</span></div>
+        <a class="setup-entry" href="kurulum/"><span><b>İlk kurulum mu yapıyorsunuz?</b><small>Kurulum giriş ekranına geçin</small></span><b>→</b></a>
+      </section>
     </div>
   </div>
 </section>
