@@ -31,6 +31,8 @@ document.querySelectorAll('[data-login-form]').forEach(form=>{
     }
 
     try{
+      const submit=form.querySelector('[type="submit"]');
+      if(submit)submit.disabled=true;
       const response=await fetch(endpoint,{
         method:'POST',
         headers:{'Content-Type':'application/json'},
@@ -38,11 +40,33 @@ document.querySelectorAll('[data-login-form]').forEach(form=>{
         body:JSON.stringify({username,password,area})
       });
       const data=await response.json().catch(()=>({}));
-      if(!response.ok||!data.ok)throw new Error('login_failed');
+      if(!response.ok||!data.ok){
+        const message=response.status===403?'Bu alan için hesabınızın yetkisi yok.':(data.error||'Kullanıcı adı veya şifre doğrulanamadı.');
+        throw new Error(message);
+      }
       if(status){status.classList.add('success');status.textContent='Giriş başarılı, yönlendiriliyorsunuz…';}
       if(data.redirectUrl)window.location.assign(data.redirectUrl);
-    }catch(_){
-      if(status){status.classList.add('error');status.textContent='Kullanıcı adı veya şifre doğrulanamadı.';}
+      else throw new Error('Yönlendirme adresi bulunamadı.');
+    }catch(error){
+      if(status){status.classList.add('error');status.textContent=error instanceof Error?error.message:'Kullanıcı adı veya şifre doğrulanamadı.';}
+    }finally{
+      const submit=form.querySelector('[type="submit"]');
+      if(submit)submit.disabled=false;
     }
   });
 });
+
+window.OkulivaAuth={
+  logout:async()=>{
+    const endpoint=window.OKULIVA_AUTH_ENDPOINT;
+    if(!endpoint)return false;
+    const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({action:'logout'})});
+    return response.ok;
+  },
+  session:async()=>{
+    const endpoint=window.OKULIVA_AUTH_ENDPOINT;
+    if(!endpoint)return null;
+    const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},credentials:'include',body:JSON.stringify({action:'session'})});
+    return response.ok?response.json():null;
+  }
+};
