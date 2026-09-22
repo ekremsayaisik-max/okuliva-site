@@ -70,3 +70,38 @@ window.OkulivaAuth={
     return response.ok?response.json():null;
   }
 };
+
+// The page itself contains no protected school data.  This small panel is only
+// displayed after the server has validated the HttpOnly session cookie.
+document.querySelectorAll('[data-login-form]').forEach(async form=>{
+  const area=form.dataset.area;
+  const card=form.closest('.auth-card');
+  if(!card)return;
+  try{
+    const session=await window.OkulivaAuth.session();
+    const allowed=session?.ok&&session.role==='admin'&&(area==='admin'||session.setupStatus==='setup_pending');
+    if(!allowed)return;
+
+    form.hidden=true;
+    const support=card.querySelector('.support-link');
+    if(support)support.hidden=true;
+    const panel=document.createElement('div');
+    panel.className='form-status success';
+    panel.dataset.authenticatedPanel='true';
+    panel.textContent=area==='setup'
+      ? 'Kurulum oturumunuz açık. Kurulum işlemlerine devam edebilirsiniz.'
+      : 'İdare Masası oturumunuz açık. Okulunuz için yetkili erişim sağlandı.';
+    const logout=document.createElement('button');
+    logout.type='button';
+    logout.className='btn secondary login-submit';
+    logout.textContent='Güvenli çıkış yap';
+    logout.addEventListener('click',async()=>{
+      logout.disabled=true;
+      await window.OkulivaAuth.logout();
+      window.location.reload();
+    });
+    card.append(panel,logout);
+  }catch{
+    // An unavailable session endpoint must not reveal a protected state.
+  }
+});
